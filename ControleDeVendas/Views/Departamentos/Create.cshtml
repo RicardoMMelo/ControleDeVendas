@@ -1,10 +1,10 @@
 ﻿@model ControleDeVendas.Models.Departamento
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Novo Departamento";
 }
 
-<h2>Create</h2>
+    <h2>Novo Departamento</h2>
 
 <h4>Departamento</h4>
 <hr />
@@ -18,14 +18,14 @@
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Novo" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar para Lista</a>
 </div>
 
 @section Scripts {
