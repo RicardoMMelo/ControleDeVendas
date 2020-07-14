@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using ControleDeVendas.Data;
 
 namespace ControleDeVendas
 {
@@ -33,6 +35,10 @@ namespace ControleDeVendas
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<ControleDeVendasContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("ControleDeVendasContext"), builder =>
+                    builder.MigrationsAssembly("ControleDeVendas")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

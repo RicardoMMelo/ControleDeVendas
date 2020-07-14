@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ControleDeVendas.Models;
+using ControleDeVendas.Models;
 
 namespace ControleDeVendas.Controllers
 {
@@ -18,6 +19,7 @@ namespace ControleDeVendas.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
+            ViewData["Email"] = "ricardommelojc@gmail.com";
 
             return View();
         }
