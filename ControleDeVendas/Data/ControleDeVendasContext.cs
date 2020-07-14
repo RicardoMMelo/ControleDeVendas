@@ -15,5 +15,7 @@ namespace ControleDeVendas.Data
         }
 
         public DbSet<ControleDeVendas.Models.Departamento> Departamento { get; set; }
+        public DbSet<ControleDeVendas.Models.Vendas> Vendas { get; set; }
+        public DbSet<ControleDeVendas.Models.Vendedor> Vendedor { get; set; }
     }
 }
