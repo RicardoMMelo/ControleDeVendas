@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ControleDeVendas.Models;
 
-namespace ControleDeVendas.Data
+namespace ControleDeVendas.Models
 {
     public class ControleDeVendasContext : DbContext
     {
