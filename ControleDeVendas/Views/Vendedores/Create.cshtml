@@ -1,0 +1,38 @@
+﻿@model ControleDeVendas.Models.Vendedor
+@{
+    ViewData["Title"] = "Novo Vendedor";
+}
+
+<h2>Novo Vendedor</h2>
+<hr />
+<h4>Vendedor</h4>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Aniversario" class="control-label"></label>
+                <input asp-for="Aniversario" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="SalarioBase" class="control-label"></label>
+                <input asp-for="SalarioBase" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+            <div>
+                <a asp-action="Index">Voltar para Lista</a>
+            </div>
+        </form>
+    </div>
+</div>
+

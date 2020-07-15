@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ControleDeVendas.Data;
 using ControleDeVendas.Models;
+using ControleDeVendas.Servicos;
 
 namespace ControleDeVendas
 {
@@ -42,6 +43,7 @@ namespace ControleDeVendas
                     builder.MigrationsAssembly("ControleDeVendas")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<VendedorServicos>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
