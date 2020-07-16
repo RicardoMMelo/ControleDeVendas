@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using ControleDeVendas.Models;
 using ControleDeVendas.Servicos;
 using Microsoft.AspNetCore.Mvc;
+using ControleDeVendas.Controllers;
+using ControleDeVendas.Models.ViewModels;
 
 namespace ControleDeVendas.Controllers
 {
@@ -12,10 +14,12 @@ namespace ControleDeVendas.Controllers
     {
         //Injeção de dependência
         private readonly VendedorServicos _vendedorServicos;
+        private readonly DepartamentoServico _departamentoServico;
 
-        public VendedoresController(VendedorServicos vendedorServicos)
+        public VendedoresController(VendedorServicos vendedorServicos, DepartamentoServico departamentoServico)
         {
             _vendedorServicos = vendedorServicos;
+            _departamentoServico = departamentoServico;
         }
         // Termina a injeção
         public IActionResult Index()
@@ -27,7 +31,9 @@ namespace ControleDeVendas.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var departamentos = _departamentoServico.FindAll();
+            var viewModel = new VendedorViewModel { Departamentos = departamentos };
+            return View(viewModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -35,6 +41,21 @@ namespace ControleDeVendas.Controllers
         {
             _vendedorServicos.Insert(vendedor);
             return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Delete(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _vendedorServicos.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
         }
     }
 }
