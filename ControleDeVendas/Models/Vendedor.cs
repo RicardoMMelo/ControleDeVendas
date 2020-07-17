@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,10 +10,16 @@ namespace ControleDeVendas.Models
     {
         public int Id { get; set; }
         public string Nome { get; set; }
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [Display(Name = "Aniversário")]
+        [DataType(DataType.Date)]
         public DateTime Aniversario { get; set; }
+        [Display(Name = "Salário Base")]
+        [DisplayFormat(DataFormatString ="{0:F2}")]
         public double SalarioBase { get; set; }
         public Departamento Departamento { get; set; }
+        [Display(Name = "Departamento")]
         public int DepartamentoId { get; set; }
         public ICollection<Vendas> Vendas { get; set; } = new List<Vendas>();
 
