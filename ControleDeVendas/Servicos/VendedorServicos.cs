@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using ControleDeVendas.Models;
 using ControleDeVendas.Servicos;
+using ControleDeVendas.Servicos.Excesoes;
+using Microsoft.EntityFrameworkCore;
 
 namespace ControleDeVendas.Servicos
 {
@@ -29,7 +31,7 @@ namespace ControleDeVendas.Servicos
 
         public Vendedor FindById(int id)
         {
-            return _context.Vendedor.FirstOrDefault(obj => obj.Id == id);
+            return _context.Vendedor.Include(obj => obj.Departamento).FirstOrDefault(obj => obj.Id == id);
         }
 
         public void Remove(int id)
@@ -37,6 +39,23 @@ namespace ControleDeVendas.Servicos
             var obj = _context.Vendedor.Find(id);
             _context.Vendedor.Remove(obj);
             _context.SaveChanges();
+        }
+
+        public void Update(Vendedor obj)
+        {
+            if(!_context.Vendedor.Any(x => x.Id == obj.Id))
+            {
+                throw new NotFoundException("Vendedor não Encontrado");
+            }
+            try
+            {
+                _context.Update(obj);
+                _context.SaveChanges();
+            }
+            catch(DbUpdateConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
         }
     }
 }

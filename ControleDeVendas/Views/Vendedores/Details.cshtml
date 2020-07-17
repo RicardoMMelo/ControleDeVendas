@@ -1,13 +1,12 @@
 ﻿@model ControleDeVendas.Models.Vendedor
+
 @{
-    ViewData["Title"] = "Apagar";
+    ViewData["Title"] = "Detalhes";
 }
 
-<h2>Tem certeza que deseja Apagar?</h2>
-<br />
+<h2>Detalhes</h2>
+<hr />
 <div>
-    <h4>Vendedor</h4>
-    <hr/>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
@@ -33,14 +32,18 @@
         <dd>
             @Html.DisplayFor(model => model.SalarioBase)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Departamento.Nome)
+        </dd>
     </dl>
-
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Apagar" class="btn btn-danger" />
-        <div>
-            <br />
-            <a asp-action="Index">Voltar para Lista</a>
-        </div>
-    </form>
 </div>
+<div>
+    <a asp-action="Edit" asp-route-Id="@Model.Id" class="btn btn-default">Editar</a>
+    <br />
+    <br />
+    <a asp-action="Index">Voltar para Lista</a>
+</div>
+

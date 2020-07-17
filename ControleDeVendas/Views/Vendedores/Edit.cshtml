@@ -1,0 +1,43 @@
+﻿@model ControleDeVendas.Models.ViewModels.VendedorViewModel
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h2>Editar</h2>
+<hr />
+<h4>Vendedor</h4>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit"> 
+            <input type="hidden" asp-for="Vendedor.Id" />
+            <div class="form-group">
+                <label asp-for="Vendedor.Nome" class="control-label"></label>
+                <input asp-for="Vendedor.Nome" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Vendedor.Email" class="control-label"></label>
+                <input asp-for="Vendedor.Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Vendedor.Aniversario" class="control-label"></label>
+                <input asp-for="Vendedor.Aniversario" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Vendedor.SalarioBase" class="control-label"></label>
+                <input asp-for="Vendedor.SalarioBase" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Vendedor.DepartamentoId" class="control-label"></label>
+                <select asp-for="Vendedor.DepartamentoId" asp-items="@(new SelectList(Model.Departamentos,"Id","Nome"))" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+            <div>
+                <a asp-action="Index">Voltar para Lista</a>
+            </div>
+        </form>
+    </div>
+</div>
+
