@@ -36,9 +36,16 @@ namespace ControleDeVendas.Servicos
 
         public void Remove(int id)
         {
-            var obj = _context.Vendedor.Find(id);
-            _context.Vendedor.Remove(obj);
-            _context.SaveChanges();
+            try
+            {
+                var obj = _context.Vendedor.Find(id);
+                _context.Vendedor.Remove(obj);
+                _context.SaveChanges();
+            }
+            catch(DbUpdateException e)
+            {
+                throw new IntegrityException("Não é possível apagar este Vendedor porque tem Vendas cadastradas.");
+            }
         }
 
         public void Update(Vendedor obj)
